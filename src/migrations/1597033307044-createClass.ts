@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export class createClass1597033307044 implements MigrationInterface {
+export class CreateClass1597033307044 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
@@ -28,7 +28,7 @@ export class createClass1597033307044 implements MigrationInterface {
                     default: "now()"
                 },
                 {
-                    name: "updateAt",
+                    name: "updatedAt",
                     type: "timestamp",
                     default: "now()"
                 }
