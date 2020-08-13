@@ -1,7 +1,8 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { networkInterfaces } from "os";
 
 @Entity("class")
-export class Class{
+export default class Class{
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
