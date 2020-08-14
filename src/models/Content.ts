@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm";
+import Lesson from "./Lesson";
 
 @Entity("content")
 export default class Content{
@@ -10,4 +11,8 @@ export default class Content{
     
     @Column({name: "link_content", length: 45})
     linkContent: string;
+
+    @OneToOne(type => Lesson, content => Content)
+    @JoinColumn()
+    lesson: Lesson
 }
