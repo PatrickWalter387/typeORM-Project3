@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, JoinTable, ManyToMany } from "typeorm";
+import Class from "./Class";
 
 @Entity("student")
 export default class Student{
@@ -10,6 +11,10 @@ export default class Student{
 
     @Column({length: 45, unique: true})
     key: string;
+
+    @ManyToMany(type => Class)
+    @JoinTable()
+    classes: Class;
 
     @CreateDateColumn()
     createdAt: Date;
