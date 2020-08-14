@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
-import { networkInterfaces } from "os";
 
 @Entity("class")
 export default class Class{
