@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from "typeorm";
+import Lesson from "./Lesson";
 
 @Entity("class")
 export default class Class{
@@ -10,6 +11,9 @@ export default class Class{
 
     @Column()
     duration: number;
+
+    @OneToMany(type => Lesson, schoolClass => Class)
+    lessons: Lesson[];
 
     @CreateDateColumn()
     createdAt: Date;
