@@ -1,10 +1,11 @@
 import { getRepository } from "typeorm";
 import {Request, Response} from "express";
+import Content from "../models/Content";
 
 class ContentController{
     async create(req: Request, res: Response){
         try{
-            const repository = getRepository();
+            const repository = getRepository(Content);
             const repoSaved = await repository.save(req.body);
             res.status(201).json(repoSaved);
         }
@@ -16,7 +17,7 @@ class ContentController{
 
     async index(req: Request, res: Response){
         try{
-            const repository = getRepository();
+            const repository = getRepository(Content);
             const reposFind = await repository.find();
             res.status(201).json(reposFind);
         }
