@@ -6,7 +6,7 @@ export default class Class{
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({ unique: true, length: 100 })
+    @Column()
     name: string;
 
     @Column()

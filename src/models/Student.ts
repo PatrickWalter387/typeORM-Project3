@@ -7,7 +7,7 @@ export default class Student{
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column({length: 45})
+    @Column({ length: 45 })
     @MaxLength(45)
     @MinLength(5)
     name: string;
