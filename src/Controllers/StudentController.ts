@@ -1,13 +1,27 @@
 import { getRepository } from "typeorm";
 import {Request, Response} from "express";
 import Student from "../models/Student";
+import { validate } from "class-validator";
 
 class StudentController{
     async create(req: Request, res: Response){
         try{
+            const { key, name, email} = req.body; 
             const repository = getRepository(Student);
-            const repoSaved = await repository.save(req.body);
-            res.status(201).json(repoSaved);
+            const student = repository.create({ key, name, email});
+
+            const errors = await validate(student);
+
+            if(errors.length === 0){
+                console.log("a");
+                const repoSaved = await repository.save(student);
+                res.status(201).json(repoSaved);
+            }
+            else{
+                res.json(errors);
+            }
+
+            
         }
         catch(err){
             console.log("Error: " + err.message);
